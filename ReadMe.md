@@ -35,7 +35,8 @@ Before uploading, you must update the Wi-Fi credentials in the `main.cpp` file:
 const char* ssid = "Your_WiFi_SSID"; // <-- UPDATE THIS 
 const char* password = "Your_WiFi_PASSWORD"; // <-- UPDATE THIS
 
-// GPIO Pin Definitions const int CHARGE_PIN = 17; // Change this if needed
+// GPIO Pin Definitions
+const int CHARGE_PIN = 17; // Change this if needed
 ```
 
 ## 🚀 API Endpoints
