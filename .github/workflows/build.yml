@@ -1,0 +1,34 @@
+name: PlatformIO Build Validation
+
+# Controls when the workflow will run
+on:
+  push:
+    branches: 
+        - main
+# A workflow run is made up of one or more jobs
+jobs:
+  build_firmware:
+    name: Build ESP32 Firmware
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Step 1: Checks out your repository under $GITHUB_WORKSPACE
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Python, which is required by PlatformIO
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      # Step 3: Install PlatformIO Core globally
+      - name: Install PlatformIO Core
+        run: pip install platformio
+
+      # Step 4: Run the PlatformIO build process
+      # We must change directory (cd) into the 'TestBench' folder 
+      # because that is where the platformio.ini file resides.
+      - name: Run PlatformIO Build
+        run: pio run
+        working-directory: TestBench
